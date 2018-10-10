@@ -666,6 +666,7 @@ MonoBehaviour:
   maxSpeed: 5
   jumpForce: 10
   rb2d: {fileID: 1757389055}
+  groundDetectTrigger: {fileID: 1757389059}
   groundContactFilter:
     useTriggers: 0
     useLayerMask: 1
