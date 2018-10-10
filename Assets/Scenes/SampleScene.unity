@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 172688866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0.63, y: -4.52, z: 0}
   m_LocalScale: {x: 7.202926, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -307,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380062611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88, y: -4.5, z: 0}
+  m_LocalPosition: {x: 7.81, y: -4.51, z: 0}
   m_LocalScale: {x: 7.202926, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -522,8 +522,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1402664241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.471, y: -4.5, z: 0}
-  m_LocalScale: {x: 7.202926, y: 1, z: 1}
+  m_LocalPosition: {x: -8.009, y: -4.5, z: 0}
+  m_LocalScale: {x: 10.126136, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -556,7 +556,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1757389053}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2d73879aaca95c3419a0804beddb85aa, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -666,6 +666,11 @@ MonoBehaviour:
   maxSpeed: 5
   jumpForce: 10
   rb2d: {fileID: 1757389055}
+  playerGroundCollider: {fileID: 1757389054}
+  playerMovingPhysicsMaterial: {fileID: 6200000, guid: fd3bbc34b95297e4b9f1530fa88d6e7b,
+    type: 2}
+  playerStoppingPhysicsMaterial: {fileID: 6200000, guid: 2d73879aaca95c3419a0804beddb85aa,
+    type: 2}
   groundDetectTrigger: {fileID: 1757389059}
   groundContactFilter:
     useTriggers: 0
