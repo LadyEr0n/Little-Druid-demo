@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,15 +33,27 @@ public class PlayerCharacter : MonoBehaviour
     private float horizontalInput;
     private bool isOnGround;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
+    private Animator animator;
 
     private Checkpoint currentCheckpoint;
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         UpdateIsOnGround();
         UpdateHorizontalInput();
         HandleJumpInput();
+        UpdateAnimationParameters();
+    }
+
+    private void UpdateAnimationParameters()
+    {
+        animator.SetBool("Ground", isOnGround);
     }
 
     private void FixedUpdate()
