@@ -54,6 +54,8 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateAnimationParameters()
     {
         animator.SetBool("Ground", isOnGround);
+        animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+        animator.SetFloat("vSpeed", rb2d.velocity.y);
     }
 
     private void FixedUpdate()
