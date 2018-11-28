@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationForce: 40
   maxSpeed: 5
-  jumpForce: 15
+  jumpForce: 14
   rb2d: {fileID: 50469299979604080}
   playerGroundCollider: {fileID: 61251495231883456}
   playerMovingPhysicsMaterial: {fileID: 6200000, guid: fd3bbc34b95297e4b9f1530fa88d6e7b,
