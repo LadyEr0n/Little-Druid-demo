@@ -30,6 +30,10 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private ContactFilter2D groundContactFilter;
 
+    private bool hasDoubleJumped;
+    private bool isDead;
+
+
     private float horizontalInput;
     private bool isOnGround;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
@@ -56,6 +60,7 @@ public class PlayerCharacter : MonoBehaviour
         animator.SetBool("Ground", isOnGround);
         animator.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         animator.SetFloat("vSpeed", rb2d.velocity.y);
+        animator.SetBool("Dead", isDead);
     }
 
     private void FixedUpdate()
@@ -79,6 +84,10 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateIsOnGround()
     {
         isOnGround= groundDetectTrigger.OverlapCollider(groundContactFilter, groundHitDetectionResults)>0;
+       if (isOnGround)
+        {
+            hasDoubleJumped = false;
+        }
         //Debug.Log("isOnGround: " + isOnGround);
     }
 
@@ -89,9 +98,13 @@ public class PlayerCharacter : MonoBehaviour
 
     private void HandleJumpInput()
     {
-        if (Input.GetButtonDown("Jump") && isOnGround)
+        if (Input.GetButtonDown("Jump") && (isOnGround || !hasDoubleJumped))
         {
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+        if (Input.GetButtonDown("Jump") && !isOnGround)
+        {
+            hasDoubleJumped = true;
         }
     }
 
@@ -99,14 +112,25 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Move()
     {
-        rb2d.AddForce(Vector2.right * horizontalInput * accelerationForce);
-        Vector2 clampedVelocity = rb2d.velocity;
-        clampedVelocity.x = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
-        rb2d.velocity = clampedVelocity;
+        if (!isDead)
+        {
+            rb2d.AddForce(Vector2.right * horizontalInput * accelerationForce);
+            Vector2 clampedVelocity = rb2d.velocity;
+            clampedVelocity.x = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
+            rb2d.velocity = clampedVelocity;
+        }
+        
+    }
+
+    private void killPlayer()
+    {
+        isDead = true;
+        
     }
 
     public void Respawn()
     {
+        isDead = false;
         if (currentCheckpoint==null)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
