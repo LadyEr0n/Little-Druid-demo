@@ -55,6 +55,15 @@ public class PlayerCharacter : MonoBehaviour
         UpdateAnimationParameters();
     }
 
+    private void CheckForRespawn()
+    {
+        if (isDead)
+        {
+            if (Input.GetButtonDown("Respawn"))
+                Respawn();
+        }
+    }
+
     private void UpdateAnimationParameters()
     {
         animator.SetBool("Ground", isOnGround);
@@ -122,7 +131,7 @@ public class PlayerCharacter : MonoBehaviour
         
     }
 
-    private void killPlayer()
+    public void KillPlayer()
     {
         isDead = true;
         
