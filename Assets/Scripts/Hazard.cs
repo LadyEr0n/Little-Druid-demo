@@ -11,7 +11,7 @@ public class Hazard : MonoBehaviour
         {
             Debug.Log("Player entered hazard.");
             PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
-            player.Respawn();
+            player.KillPlayer();
         }
         else
         {
