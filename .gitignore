@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Scenes/Scene2.unity
+*.unity
+Assets/Scenes/Scene2.unity
+ProjectSettings/GraphicsSettings.asset
